@@ -18,6 +18,7 @@ export class ServerComponent implements OnInit {
   showServerName = false;
   color: string = "#000000";
   isOnline: boolean = false;
+  servers: string[] = ["server 1", "server 2", "server 3", "server 4", "server 5"];
 
   constructor() {
     setTimeout(() => {

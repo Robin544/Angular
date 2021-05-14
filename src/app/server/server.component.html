@@ -26,3 +26,8 @@
 <!-- ngClass -->
 <p [ngClass]="{online: isOnline === true}">Hello world!</p>
 <button (click)="setOnline()">Click</button>
+
+<br/>
+<br/>
+<!-- *ngFor directive -->
+<p *ngFor="let server of servers; let i = index">{{server}} is on {{i}} index</p>
