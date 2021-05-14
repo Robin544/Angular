@@ -11,6 +11,7 @@ export class ServerComponent implements OnInit {
   serverStatus: string = "No server is created.";
   serverName = "Hello";
   showServerName = false;
+  color: string = "#000000";
 
   constructor() {
     setTimeout(() => {

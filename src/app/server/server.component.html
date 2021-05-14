@@ -18,3 +18,7 @@
 <!-- Two way data  -->
 <input type="text" class="form-control" placeholder="Two way binding" [(ngModel)]="serverName" />
 <p>{{serverName}}</p>
+
+<!-- ngStyle -->
+<input type="color" [(ngModel)]="color" />
+<p [ngStyle]="{backgroundColor: color}">{{color}}</p>
