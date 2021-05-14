@@ -8,10 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ServerComponent implements OnInit {
   variable: string = "Server";
   allowServer: boolean = false;
-
-  myFunction = () => {
-    return this.variable;
-  }
+  serverStatus: string = "No server is created.";
 
   constructor() {
     setTimeout(() => {
@@ -20,6 +17,14 @@ export class ServerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  myFunction = () => {
+    return this.variable;
+  }
+
+  onAddServer() {
+    return this.serverStatus = "Server is created.";
   }
 
 }
