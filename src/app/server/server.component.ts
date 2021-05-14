@@ -3,6 +3,11 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-server',
   templateUrl: './server.component.html',
+  styles: [`
+  .online {
+    font-size: 34px;
+  }
+  `],
   styleUrls: ['./server.component.scss']
 })
 export class ServerComponent implements OnInit {
@@ -12,6 +17,7 @@ export class ServerComponent implements OnInit {
   serverName = "Hello";
   showServerName = false;
   color: string = "#000000";
+  isOnline: boolean = false;
 
   constructor() {
     setTimeout(() => {
@@ -33,6 +39,10 @@ export class ServerComponent implements OnInit {
 
   onUpdateServer(event: Event) {
     this.serverName = (<HTMLInputElement>event.target).value;
+  }
+
+  setOnline() {
+    this.isOnline = !this.isOnline;
   }
 
 }
