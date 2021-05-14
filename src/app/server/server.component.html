@@ -4,3 +4,10 @@
 <button class="btn btn-secondary" [disabled]="!allowServer" (click)="onAddServer()">Add Server</button>
 <!-- <p>{{allowServer}}</p> -->
 <p>{{serverStatus}}</p>
+
+<!-- One way data  -->
+<input type="text" class="form-control" placeholder="One way binding" (input)="onUpdateServer($event)" />
+<br />
+<!-- Two way data  -->
+<input type="text" class="form-control" placeholder="Two way binding" [(ngModel)]="serverName" />
+<p>{{serverName}}</p>
