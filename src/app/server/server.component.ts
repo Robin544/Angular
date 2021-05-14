@@ -7,12 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServerComponent implements OnInit {
   variable: string = "Server";
+  allowServer: boolean = false;
 
-  myFunction() {
+  myFunction = () => {
     return this.variable;
   }
 
-  constructor() { }
+  constructor() {
+    setTimeout(() => {
+      this.allowServer = true;
+    }, 3000)
+  }
 
   ngOnInit(): void {
   }
