@@ -33,7 +33,8 @@ const handleAuthentication = (
     email: email,
     userId: userId,
     token: token,
-    expirationDate: expirationDate
+    expirationDate: expirationDate,
+    redirect: true
   });
 };
 
@@ -58,7 +59,7 @@ const handleError = (errorRes: any) => {
 
 @Injectable()
 export class AuthEffects {
-  
+
   authSignup = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.SIGNUP_START),
     switchMap((signupAction: AuthActions.SignupStart) => {
@@ -91,7 +92,7 @@ export class AuthEffects {
     })
   ));
 
-  
+
   authLogin = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.LOGIN_START),
     switchMap((authData: AuthActions.LoginStart) => {
@@ -124,15 +125,17 @@ export class AuthEffects {
     })
   ));
 
-  
+
   authRedirect = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.AUTHENTICATE_SUCCESS),
-    tap(() => {
-      this.router.navigate(['/']);
+    tap((authSuccessAction: AuthActions.AuthenticateSuccess) => {
+      if (authSuccessAction.payload.redirect) {
+        this.router.navigate(['/']);
+      }
     })
   ), { dispatch: false });
 
-  
+
   autoLogin = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.AUTO_LOGIN),
     map(() => {
@@ -163,7 +166,8 @@ export class AuthEffects {
           email: loadedUser.email,
           userId: loadedUser.id,
           token: loadedUser.token,
-          expirationDate: new Date(userData._tokenExpirationDate)
+          expirationDate: new Date(userData._tokenExpirationDate),
+          redirect: false
         });
 
         // const expirationDuration =
